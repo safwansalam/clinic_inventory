@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Dashboard</h2>
+
+<div class="row">
+
+<div class="col-md-4">
+
+<div class="card text-white bg-success">
+
+<div class="card-body">
+
+<h5>Total Medicines</h5>
+<h2>{{total_medicines}}</h2>
+    <a href="/medicine_table/" class="btn btn-light btn-sm mt-2">
+View Medicines
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="card text-white bg-danger">
+
+<div class="card-body">
+
+<h5>Low Stock</h5>
+
+<h2>{{low_stock.count}}</h2>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="card text-white bg-warning">
+
+<div class="card-body">
+
+<h5>Near Expiry</h5>
+
+<h2>{{near_expiry.count}}</h2>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

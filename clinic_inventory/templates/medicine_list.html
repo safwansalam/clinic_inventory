@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Medicines</h2>
+
+<a href="/add/" class="btn btn-primary mb-3">Add Medicine</a>
+
+<form method="GET">
+<input type="text" name="search" class="form-control mb-3" placeholder="Search medicine">
+</form>
+
+<table class="table table-bordered">
+
+<tr>
+<th>Name</th>
+<th>Category</th>
+<th>Price</th>
+<th>Expiry</th>
+<th>Stock</th>
+<th>Action</th>
+</tr>
+
+{% for m in medicines %}
+
+<tr class="{% if m.stock < 10 %}table-danger{% endif %}">
+
+<td><a href="/details/{{m.id}}/">{{m.name}}</a></td>
+
+<td>{{m.category}}</td>
+
+<td>{{m.price}}</td>
+
+<td>{{m.expiry_date}}</td>
+
+<td>
+{% if m.stock < 10 %}
+<span class="text-danger fw-bold">{{m.stock}}</span>
+{% else %}
+{{m.stock}}
+{% endif %}
+</td>
+
+<td>
+
+<a href="/edit/{{m.id}}" class="btn btn-warning btn-sm">Edit</a>
+
+<a href="/delete/{{m.id}}" class="btn btn-danger btn-sm"
+onclick="return confirm('Delete medicine?')">Delete</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

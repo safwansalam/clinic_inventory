@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Edit Medicine</h2>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<select class="form-control mb-2" name="category">
+
+<option value="Tablet" {% if medicine.category == "Tablet" %}selected{% endif %}>Tablet</option>
+
+<option value="Syrup" {% if medicine.category == "Syrup" %}selected{% endif %}>Syrup</option>
+
+<option value="Injection" {% if medicine.category == "Injection" %}selected{% endif %}>Injection</option>
+
+<option value="Capsule" {% if medicine.category == "Capsule" %}selected{% endif %}>Capsule</option>
+
+</select>
+
+<input class="form-control mb-2" value="{{medicine.price}}" name="price">
+
+<input type="date" class="form-control mb-2" value="{{medicine.expiry_date}}" name="expiry">
+
+<input class="form-control mb-2" value="{{medicine.manufacturer}}" name="manufacturer">
+
+<input class="form-control mb-2" value="{{medicine.stock}}" name="stock">
+
+<textarea class="form-control mb-2" name="description">{{medicine.description}}</textarea>
+
+<button class="btn btn-success">Update</button>
+
+</form>
+
+{% endblock %}
